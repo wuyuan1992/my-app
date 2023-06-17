@@ -3,3 +3,5 @@
 @tailwind utilities;
 
 @import "./theme/index.css";
+
+/* @import "~@douyinfe/semi-ui/dist/css/semi.min.css"; */

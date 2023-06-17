@@ -15,15 +15,20 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head />
+        <head>
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/@douyinfe/semi-ui@2.27.0/dist/css/semi.css"
+          />
+        </head>
         <body
-          className={cn("flex min-h-screen flex-col antialiased")}
-          style={{ background: "var(--semi-color-bg-1)" }}
+          className={cn("flex min-h-full flex-col antialiased")}
+          style={{ background: "var(--semi-color-bg-4)" }}
         >
           <header
             className="h-[88px] w-full"
             style={{
-              background: "var(--semi-color-fill-1)",
+              background: "var(--semi-color-nav-bg)",
               backdropFilter: "blur(10px)",
             }}
           >
@@ -33,7 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </div>
           </header>
 
-          <div className="w-screen flex-1">
+          <div className="w-full flex-1">
             <div className="m-auto h-full min-w-[768px] max-w-[1200px] p-4">
               {children}
             </div>
