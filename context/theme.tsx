@@ -41,10 +41,3 @@ export function useWatchTheme() {
     document.documentElement.setAttribute("data-theme-color", themeColor)
   }, [themeColor, themeMode])
 }
-
-// const Context = React.createContext(useTheme.getState())
-
-// export function ThemeProvider({ children }: { children: React.ReactNode }) {
-//   const store = useTheme()
-//   return <Context.Provider value={store}>{children}</Context.Provider>
-// }

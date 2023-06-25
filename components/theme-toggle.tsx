@@ -7,7 +7,7 @@ import { IconMoon, IconSun } from "@douyinfe/semi-icons"
 import { Badge, Radio, RadioGroup, Select, Tooltip } from "@douyinfe/semi-ui"
 
 import "./theme-icon.css"
-import clsx from "clsx"
+import { cn } from "@/utils/cls"
 
 export function ThemeToggle() {
   const { setThemeMode, themeMode } = useTheme()
@@ -25,13 +25,13 @@ export function ThemeToggle() {
         onClick={() => setThemeMode(isDark ? "light" : "dark")}
       >
         <IconMoon
-          className={clsx("themeIcon themeIconMoon", {
+          className={cn("themeIcon themeIconMoon", {
             active: isDark,
           })}
           style={{ color: "rgba(var(--semi-teal-5), 1)" }}
         />
         <IconSun
-          className={clsx("themeIcon themeIconSun", {
+          className={cn("themeIcon themeIconSun", {
             active: !isDark,
           })}
           style={{ color: "rgba(var(--semi-orange-5), 1)" }}

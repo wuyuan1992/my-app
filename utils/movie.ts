@@ -1,12 +1,8 @@
 import * as cheerio from "cheerio"
 
-const baseUrl = "https://www.bugutv.net/4kmovie"
+import type { Movie } from "@/types/movie"
 
-interface Movie {
-  title: string
-  poster: string
-  downloadLink: string
-}
+const baseUrl = "https://www.bugutv.net/4kmovie"
 
 async function getElement(url: string) {
   const result = await fetch(url).then((value) => value?.text())
@@ -25,12 +21,7 @@ async function pickList(url: string) {
 
   const list = $("div.entry-media a[href^=https://www.bugutv.net]")
 
-  // TODO: 调试
-  // return list.map((_, dom) => $(dom).attr("href")).toArray()
-  return list
-    .map((_, dom) => $(dom).attr("href"))
-    .toArray()
-    .slice(0, 3)
+  return list.map((_, dom) => $(dom).attr("href")).toArray()
 }
 
 async function pickMovie(url: string) {
@@ -38,12 +29,12 @@ async function pickMovie(url: string) {
   if (!$) return null
 
   const titleRaw = $("head title").text()
-  const downloadLink = $("a[href^=magnet:?xt=]").attr("href") ?? ""
+  const download = $("a[href^=magnet:?xt=]").attr("href") ?? ""
   const poster = $("figure.wp-block-image img").attr("src") ?? ""
 
-  const title = titleRaw?.split("/")?.[0]?.trim() ?? titleRaw ?? ""
+  const name = titleRaw?.split("/")?.[0]?.trim() ?? titleRaw ?? ""
 
-  return { title, poster, downloadLink } as Movie
+  return { name, poster, download } as Movie
 }
 
 async function getMovieOfPage(page: number) {

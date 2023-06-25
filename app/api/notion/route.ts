@@ -9,7 +9,7 @@ import {
 const notionAuth = process.env.NOTION_TOKEN ?? ""
 const notionDatabaseId = process.env.NOTION_DATABASE_ID ?? ""
 
-export async function GET(request: Request) {
+export async function POST(request: Request) {
   const moviesTableBlock = await getMoviesTable()
 
   const client = new Client({
@@ -41,11 +41,12 @@ async function getMoviesTable() {
   const cols = ["标题", "海报", "下载链接"]
   const movies = await getMoviesFromInPageRange(1, 2)
   const rows = movies.map((movie) => {
-    return [movie.title, movie.poster, movie.downloadLink]
+    return [movie.name, movie.poster, movie.download]
   })
 
   return getTableBlock(cols, rows)
 }
+
 function getTableBlock(cols: string[], rows: string[][]) {
   const titleRow: BlockObjectRequestWithoutChildren = {
     type: "table_row",
