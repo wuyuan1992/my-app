@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getMoviesFromInPageRange } from "@/utils/movie"
+import { kv } from "@vercel/kv"
 
+import { SYNC_PAGE_KEY } from "@/config/RedisKey"
 import db from "@/lib/prisma"
 
 export async function GET(request: NextRequest) {
@@ -15,16 +17,17 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST() {
-  for (let page = 1; page <= 30; page++) {
-    const movies = await getMoviesFromInPageRange(page, page + 1)
-    await db.movie.createMany({
-      data: movies.map((movie) => ({
-        name: movie.name,
-        poster: movie.poster,
-        download: movie.download ?? "",
-      })),
-    })
-  }
+  const page = (await kv.get<number>(SYNC_PAGE_KEY)) ?? 1
+  await kv.set(SYNC_PAGE_KEY, page + 1)
+
+  const movies = await getMoviesFromInPageRange(page, page + 1)
+  await db.movie.createMany({
+    data: movies.map((movie) => ({
+      name: movie.name,
+      poster: movie.poster,
+      download: movie.download ?? "",
+    })),
+  })
 
   return NextResponse.json({ success: true })
 }
