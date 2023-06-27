@@ -1,5 +1,5 @@
 :root body,
-:root[data-theme-color="indigo"] body {
+:root body[theme-color="indigo"] {
   /* primary */
   --semi-color-primary: rgba(var(--semi-indigo-5), 1);
   --semi-color-primary-hover: rgba(var(--semi-indigo-6), 1);

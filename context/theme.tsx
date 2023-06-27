@@ -37,7 +37,12 @@ export function useWatchTheme() {
   const { themeColor, themeMode } = useTheme()
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme-mode", themeMode)
-    document.documentElement.setAttribute("data-theme-color", themeColor)
+    // for semi
+    document.body.setAttribute("theme-mode", themeMode)
+    document.body.setAttribute("theme-color", themeColor)
+
+    // for tailwind
+    document.documentElement.setAttribute("theme-mode", themeMode)
+    document.documentElement.setAttribute("theme-color", themeColor)
   }, [themeColor, themeMode])
 }

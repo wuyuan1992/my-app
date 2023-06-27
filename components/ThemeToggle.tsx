@@ -4,12 +4,12 @@ import * as React from "react"
 import { useMemo } from "react"
 import { ThemeColor, useTheme } from "@/context/theme"
 import { IconMoon, IconSun } from "@douyinfe/semi-icons"
-import { Badge, Radio, RadioGroup, Select, Tooltip } from "@douyinfe/semi-ui"
+import { Radio, RadioGroup, Tooltip } from "@douyinfe/semi-ui"
 
-import "./theme-icon.css"
+import "./themeToggle.css"
 import { cn } from "@/utils/cls"
 
-export function ThemeToggle() {
+export default function ThemeToggle() {
   const { setThemeMode, themeMode } = useTheme()
 
   const isDark = themeMode === "dark"
@@ -19,22 +19,21 @@ export function ThemeToggle() {
       position="bottomLeft"
       trigger="hover"
       content={<ThemePrimarySelect />}
+      showArrow={false}
     >
       <div
         className="relative h-4 w-4 cursor-pointer overflow-hidden rounded-full p-4"
         onClick={() => setThemeMode(isDark ? "light" : "dark")}
       >
         <IconMoon
-          className={cn("themeIcon themeIconMoon", {
+          className={cn("themeIcon themeIconMoon text-teal-600", {
             active: isDark,
           })}
-          style={{ color: "rgba(var(--semi-teal-5), 1)" }}
         />
         <IconSun
-          className={cn("themeIcon themeIconSun", {
+          className={cn("themeIcon themeIconSun text-orange-600", {
             active: !isDark,
           })}
-          style={{ color: "rgba(var(--semi-orange-5), 1)" }}
         />
       </div>
     </Tooltip>
@@ -55,14 +54,14 @@ function ThemePrimarySelect() {
       onChange={(e) => setThemeColor(e.target.value as ThemeColor)}
     >
       {colors.map((color) => (
-        <Radio
-          value={color}
-          key={color}
-          style={{
-            border: "5px solid rgba(var(--semi-${color}-5), 1)",
-            // background: `rgba(var(--semi-${color}-5), 1)`,
-          }}
-        ></Radio>
+        <Radio value={color} key={color} className="relative">
+          <span
+            className="absolute left-[4px] top-[6px] h-2 w-2 rounded-full"
+            style={{
+              background: `rgba(var(--semi-${color}-5), 1)`,
+            }}
+          />
+        </Radio>
       ))}
     </RadioGroup>
   )

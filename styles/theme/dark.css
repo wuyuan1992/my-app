@@ -1,4 +1,4 @@
-:root[data-theme-mode="dark"] body {
+:root body[theme-mode="dark"] {
   --semi-red-0: 108, 9, 11;
   --semi-red-1: 144, 17, 16;
   --semi-red-2: 180, 32, 25;
@@ -149,20 +149,20 @@
   --semi-orange-7: 255, 221, 161;
   --semi-orange-8: 255, 239, 208;
   --semi-orange-9: 255, 249, 237;
-  --semi-grey-0: 249, 249, 249;
-  --semi-grey-1: 230, 232, 234;
-  --semi-grey-2: 198, 202, 205;
-  --semi-grey-3: 167, 171, 176;
-  --semi-grey-4: 136, 141, 146;
-  --semi-grey-5: 107, 112, 117;
-  --semi-grey-6: 85, 91, 97;
-  --semi-grey-7: 65, 70, 76;
-  --semi-grey-8: 46, 50, 56;
-  --semi-grey-9: 28, 31, 35;
+  --semi-grey-0: 28, 31, 35;
+  --semi-grey-1: 46, 50, 56;
+  --semi-grey-2: 65, 70, 76;
+  --semi-grey-3: 85, 91, 97;
+  --semi-grey-4: 107, 112, 117;
+  --semi-grey-5: 136, 141, 146;
+  --semi-grey-6: 167, 171, 176;
+  --semi-grey-7: 198, 202, 205;
+  --semi-grey-8: 230, 232, 234;
+  --semi-grey-9: 249, 249, 249;
   --semi-white: 255, 255, 255;
   --semi-black: 0, 0, 0;
 }
-:root[data-theme-mode="dark"] body {
+:root body[theme-mode="dark"] {
   --semi-color-white: #e4e7f5;
   --semi-color-black: rgba(var(--semi-black), 1);
   /* tertiary */

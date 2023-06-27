@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation"
 import { IconSearch } from "@douyinfe/semi-icons"
 import { Input } from "@douyinfe/semi-ui"
 
-function SearchBar() {
+function SearchMovie({ onSearchEnd }: { onSearchEnd?: () => void }) {
   const [search, setSearch] = useState<string>("")
   const router = useRouter()
 
@@ -14,7 +14,8 @@ function SearchBar() {
     } else {
       router.push(`/`)
     }
-  }, [search, router])
+    onSearchEnd?.()
+  }, [onSearchEnd, search, router])
 
   return (
     <Input
@@ -33,4 +34,4 @@ function SearchBar() {
   )
 }
 
-export default SearchBar
+export default SearchMovie

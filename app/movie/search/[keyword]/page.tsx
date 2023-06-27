@@ -11,9 +11,5 @@ export default function IndexPage({
 }) {
   const { data = [] } = useFetchMoviesByKeyword(keyword)
 
-  return (
-    <section>
-      <MovieList movies={data} />
-    </section>
-  )
+  return <MovieList movies={data} />
 }

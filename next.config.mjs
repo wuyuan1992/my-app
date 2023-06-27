@@ -9,6 +9,17 @@ const nextConfig = semi.default({
     appDir: true,
   },
   transpilePackages: ["@douyinfe/semi-ui", "@douyinfe/semi-icons"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.bugutv.net",
+        port: "",
+        pathname: "/public/**",
+        // pathname: '/public/**.webp',
+      },
+    ],
+  },
 })
 
 export default nextConfig

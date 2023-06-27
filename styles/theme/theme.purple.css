@@ -1,4 +1,4 @@
-:root[data-theme-color="purple"] body {
+:root body[theme-color="purple"] {
   /* primary */
   --semi-color-primary: rgba(var(--semi-purple-5), 1);
   --semi-color-primary-hover: rgba(var(--semi-purple-6), 1);

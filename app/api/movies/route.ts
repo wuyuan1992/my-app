@@ -13,7 +13,9 @@ export async function GET(request: NextRequest) {
     take: 10,
   })
 
-  return NextResponse.json(movies)
+  const total = await db.movie.count()
+
+  return NextResponse.json({ movies, total })
 }
 
 export async function POST() {
@@ -21,13 +23,23 @@ export async function POST() {
   await kv.set(SYNC_PAGE_KEY, page + 1)
 
   const movies = await getMoviesFromInPageRange(page, page + 1)
-  await db.movie.createMany({
-    data: movies.map((movie) => ({
-      name: movie.name,
-      poster: movie.poster,
-      download: movie.download ?? "",
-    })),
+
+  await movies.map(async (movie) => {
+    const exist = await db.movie.findFirst({
+      where: {
+        name: movie.name,
+      },
+    })
+    if (exist) return console.log(`Movie ${movie.name} is exist`)
+
+    return db.movie.create({
+      data: {
+        name: movie.name,
+        poster: movie.poster,
+        download: movie.download ?? "",
+      },
+    })
   })
 
-  return NextResponse.json({ success: true })
+  return NextResponse.json({ success: true, page })
 }

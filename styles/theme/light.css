@@ -1,4 +1,4 @@
-:root[data-theme-mode="light"] body {
+:root body[theme-mode="light"] {
   --semi-amber-0: 254, 251, 235;
   --semi-amber-1: 252, 245, 206;
   --semi-amber-2: 249, 232, 158;
@@ -40,16 +40,16 @@
   --semi-green-7: 37, 119, 47;
   --semi-green-8: 27, 89, 36;
   --semi-green-9: 17, 60, 24;
-  --semi-grey-0: 28, 31, 35;
-  --semi-grey-1: 46, 50, 56;
-  --semi-grey-2: 65, 70, 76;
-  --semi-grey-3: 85, 91, 97;
-  --semi-grey-4: 107, 112, 117;
-  --semi-grey-5: 136, 141, 146;
-  --semi-grey-6: 167, 171, 176;
-  --semi-grey-7: 198, 202, 205;
-  --semi-grey-8: 230, 232, 234;
-  --semi-grey-9: 249, 249, 249;
+  --semi-grey-0: 249, 249, 249;
+  --semi-grey-1: 230, 232, 234;
+  --semi-grey-2: 198, 202, 205;
+  --semi-grey-3: 167, 171, 176;
+  --semi-grey-4: 136, 141, 146;
+  --semi-grey-5: 107, 112, 117;
+  --semi-grey-6: 85, 91, 97;
+  --semi-grey-7: 65, 70, 76;
+  --semi-grey-8: 46, 50, 56;
+  --semi-grey-9: 28, 31, 35;
   --semi-indigo-0: 236, 239, 248;
   --semi-indigo-1: 209, 216, 240;
   --semi-indigo-2: 167, 179, 225;
@@ -161,9 +161,11 @@
   --semi-yellow-7: 167, 139, 0;
   --semi-yellow-8: 125, 106, 0;
   --semi-yellow-9: 83, 72, 0;
+
+  --semi-pale: 245, 245, 245;
 }
 
-:root[data-theme-mode="light"] body {
+:root body[theme-mode="light"] {
   --semi-color-white: rgba(var(--semi-white), 1);
   --semi-color-black: rgba(var(--semi-black), 1);
   /* tertiary */
@@ -203,8 +205,8 @@
   --semi-color-bg-0: rgba(var(--semi-white), 1);
   --semi-color-bg-1: rgba(var(--semi-white), 1);
   --semi-color-bg-2: rgba(var(--semi-white), 1);
-  --semi-color-bg-3: rgba(var(--semi-white), 1);
-  --semi-color-bg-4: rgba(var(--semi-white), 1);
+  --semi-color-bg-3: rgba(var(--semi-pale), 1);
+  --semi-color-bg-4: rgba(var(--semi-pale), 1);
 
   --semi-color-text-0: rgba(var(--semi-grey-9), 1);
   --semi-color-text-1: rgba(var(--semi-grey-9), 0.8);
