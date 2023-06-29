@@ -3,6 +3,7 @@
 import "@/styles/globals.css"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
+import Script from "next/script"
 import { useWatchTheme } from "@/context/theme"
 import { cn } from "@/utils/cls"
 import { IconHome, IconSearch, IconStar, IconUser } from "@douyinfe/semi-icons"
@@ -21,6 +22,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6513362304754428"
+          crossOrigin="anonymous"
+        />
         <body className={cn("flex min-h-screen flex-col antialiased")}>
           <SearchBar />
           <NavBar />
